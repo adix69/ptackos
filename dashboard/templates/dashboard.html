@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ptačí Dashboard</title>
+</head>
+<body>
+    <h1>Ptačí Dashboard</h1>
+    <table border="1" cellpadding="6" cellspacing="0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Název</th>
+                <th>Vědecký název</th>
+                <th>Řád</th>
+                <th>Čeleď</th>
+                <th>Délka (cm)</th>
+                <th>Rozpětí (cm)</th>
+                <th>Hmotnost (g)</th>
+                <th>Status</th>
+                <th>Potrava</th>
+                <th>Migrace</th>
+                <th>Kontinent</th>
+                <th>Snůška (ks)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in ptaci %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ p['nazev'] }}</td>
+                <td>{{ p['vedecky_nazev'] }}</td>
+                <td>{{ p['rad'] }}</td>
+                <td>{{ p['celed'] }}</td>
+                <td>{{ p['delka_cm'] }}</td>
+                <td>{{ p['rozpeti_cm'] }}</td>
+                <td>{{ p['hmotnost_g'] }}</td>
+                <td>{{ p['status_ohrozeni'] }}</td>
+                <td>{{ p['typ_potravy'] }}</td>
+                <td>{{ "Ano" if p['migrace'] == 1 else "Ne" }}</td>
+                <td>{{ p['vyskyt_kontinent'] }}</td>
+                <td>{{ p['snuska_ks'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
