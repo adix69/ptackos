@@ -61,6 +61,24 @@
             <input type="number" name="hmotnost_max" value="{{ params.get('hmotnost_max', '') }}" min="0">
         </label>
 
+        <label>Řadit podle:
+            <select name="razeni">
+                <option value="nazev"       {{ 'selected' if params.get('razeni') == 'nazev' }}>Název</option>
+                <option value="rad"         {{ 'selected' if params.get('razeni') == 'rad' }}>Řád</option>
+                <option value="delka_cm"    {{ 'selected' if params.get('razeni') == 'delka_cm' }}>Délka</option>
+                <option value="rozpeti_cm"  {{ 'selected' if params.get('razeni') == 'rozpeti_cm' }}>Rozpětí</option>
+                <option value="hmotnost_g"  {{ 'selected' if params.get('razeni') == 'hmotnost_g' }}>Hmotnost</option>
+                <option value="snuska_ks"   {{ 'selected' if params.get('razeni') == 'snuska_ks' }}>Snůška</option>
+            </select>
+        </label>
+
+        <label>Směr:
+            <select name="smer">
+                <option value="ASC"  {{ 'selected' if params.get('smer') == 'ASC' }}>Vzestupně</option>
+                <option value="DESC" {{ 'selected' if params.get('smer') == 'DESC' }}>Sestupně</option>
+            </select>
+        </label>
+
         <button type="submit">Filtrovat</button>
         <a href="/">Resetovat</a>
     </form>
