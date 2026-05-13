@@ -7,6 +7,66 @@
 </head>
 <body>
     <h1>Ptačí Dashboard</h1>
+
+    <form method="GET" action="/">
+        <label>Řád:
+            <select name="rad">
+                <option value="">— vše —</option>
+                {% for r in filter_options.rady %}
+                <option value="{{ r }}" {{ 'selected' if params.get('rad') == r }}>{{ r }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Potrava:
+            <select name="typ_potravy">
+                <option value="">— vše —</option>
+                {% for p in filter_options.potravy %}
+                <option value="{{ p }}" {{ 'selected' if params.get('typ_potravy') == p }}>{{ p }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Kontinent:
+            <select name="kontinent">
+                <option value="">— vše —</option>
+                {% for k in filter_options.kontinenty %}
+                <option value="{{ k }}" {{ 'selected' if params.get('kontinent') == k }}>{{ k }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Migrace:
+            <select name="migrace">
+                <option value="">— vše —</option>
+                <option value="1" {{ 'selected' if params.get('migrace') == '1' }}>Tažný</option>
+                <option value="0" {{ 'selected' if params.get('migrace') == '0' }}>Netažný</option>
+            </select>
+        </label>
+
+        <label>Status:
+            <select name="status">
+                <option value="">— vše —</option>
+                {% for s in filter_options.statusy %}
+                <option value="{{ s }}" {{ 'selected' if params.get('status') == s }}>{{ s }}</option>
+                {% endfor %}
+            </select>
+        </label>
+
+        <label>Hmotnost od (g):
+            <input type="number" name="hmotnost_min" value="{{ params.get('hmotnost_min', '') }}" min="0">
+        </label>
+
+        <label>Hmotnost do (g):
+            <input type="number" name="hmotnost_max" value="{{ params.get('hmotnost_max', '') }}" min="0">
+        </label>
+
+        <button type="submit">Filtrovat</button>
+        <a href="/">Resetovat</a>
+    </form>
+
+    <p>Zobrazeno záznamů: {{ ptaci | length }}</p>
+
     <table border="1" cellpadding="6" cellspacing="0">
         <thead>
             <tr>
